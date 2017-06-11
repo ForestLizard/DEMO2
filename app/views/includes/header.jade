@@ -1,0 +1,101 @@
+//公用的body
+nav.navbar.navbar-inverse.navbar-fixed-top
+   .container-fluid
+      .navbar-header
+         button(type="button",class="navbar-toggle collapsed",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1",aria-expanded="false")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+         a.navbar-brand(href='#')
+            span.glyphicon.glyphicon-film(aria-hidden="true")
+            ='个人制作电影分享网站MoviesShare'
+
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+         ul.nav.navbar-nav
+            li
+               a(href='/') 首页
+            li
+               a(href="#") 影评
+            li
+               a(href="#") 购票
+            li.dropdown
+               a(href="#",class="dropdown-toggle",data-toggle="dropdown",role="button",aria-haspopup="true",aria-expanded="false") 分类
+                  span.caret
+               ul.dropdown-menu
+                  li
+                     a(href="#") 动作
+                     a(href="#") 爱情
+                     a(href="#") 喜剧
+                     a(href="#") 悬疑
+                     a(href="#") 科幻
+                  li.divider(role="separator")
+                  li
+                     a(href="#") 其他
+         form.navbar-form.navbar-left
+            .form-group
+               input.form-control(type='text',placeholder='请输入影片名称')
+            button.btn.btn-default 搜索
+         ul.nav.navbar-nav.navbar-right
+            if user
+               li.navbar-text 你好，#{user.name}
+
+               li
+                  a(href='/user/logout') 退出
+            else
+               li
+                  a(href='#',data-toggle="modal",data-target="#loginModal") 登录
+               li
+                  a(href='#',data-toggle="modal",data-target="#registerModal") 注册
+            li
+               a(href='#') 联系我们
+
+#loginModal.modal.fade(tabindex="-1",role="dialog")
+   .modal-dialog(role="document")
+      .modal-content
+         .modal-header
+            button.close(type="button",data-dismiss="modal" aria-label="Close")
+               span(aria-hidden="true") &times;
+            h4.modal-title 登录
+         .modal-body
+            form#login(method="POST",action="/user/login")
+               .form-group
+                  label(for="login-name") 用户名
+                  input#login-name.form-control(type="text",name="user[name]")
+               .form-group
+                  label(for="login-password") 密码
+                  input#login-password.form-control(type="password",name="user[password]")
+               .form-group
+                  .row
+                     button.btn.btn-success.col-sm-offset-3.col-sm-2(type="submit") 确认
+                     button.btn.btn-primary.col-sm-offset-2.col-sm-2(type="reset") 重置
+#registerModal.modal.fade(tabindex="-1",role="dialog")
+   .modal-dialog(role="document")
+      .modal-content
+         .modal-header
+            button.close(type="button",data-dismiss="modal" aria-label="Close")
+               span(aria-hidden="true") &times;
+            h4.modal-title 注册
+         .modal-body
+            form#register(method="POST",action="/user/register")
+               .form-group
+                  label(for="register-name") 用户名
+                  input#register-name.form-control(type="text",name="user[name]")
+               .form-group
+                  label(for="register-password") 密码
+                  input#register-password.form-control(type="password",name="user[password]")
+               .form-group
+                  label(for="register-confirmPassword") 确认密码
+                  input#register-confirmPassword.form-control(type="password",name="user[confirmPassword]")
+               .form-group
+                  .row
+                     button.btn.btn-success.col-sm-offset-3.col-sm-2(type="submit") 确认
+                     button.btn.btn-primary.col-sm-offset-2.col-sm-2(type="reset") 重置
+
+
+header
+   .container
+      .row
+         .page-header
+            h1=title
+            small 参考imooc scott老师视频

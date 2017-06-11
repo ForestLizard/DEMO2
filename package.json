@@ -1,0 +1,37 @@
+{
+  "name": "moviesharing",
+  "version": "1.0.0",
+  "description": "A simple website made by myself",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "bootstrap": "^3.3.7",
+    "connect-mongo": "^1.3.2",
+    "connect-multiparty": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "fs": "0.0.1-security",
+    "jade": "^1.11.0",
+    "moment": "^2.18.0",
+    "mongoose": "^4.9.0",
+    "morgan": "^1.8.1",
+    "pug": "^2.0.0-beta11",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-nodemon": "^0.4.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Moviesharing"
+  ],
+  "author": "ForestLizard",
+  "license": "MIT"
+}

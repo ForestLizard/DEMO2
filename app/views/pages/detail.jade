@@ -1,0 +1,120 @@
+extends ../layout
+
+block content
+   .container
+      .row
+         .col-md-7
+            embed(src='#{movie.flash}',allowFullScreen='true',quality='high',width='720',height='600',align='middle',type='application/x-shockwave-flash')
+         .col-md-5
+            dl.dl-horizontal
+               dt 电影名字
+               dd=movie.title
+               dt 导演
+               dd=movie.director
+               dt 国家
+               dd=movie.country
+               dt 语言
+               dd=movie.lan
+               dt 上映年份
+               dd=movie.year
+               dt 简介
+               dd=movie.summary
+   .container
+      .row
+         .col-sm-7
+            .page-header
+               h3 评论
+            if user
+               .page-header
+                  form(method="post")
+                     input#comment-movie(type="hidden",value="#{movie._id}",name="comment[movie]")
+                     input#comment-from(type="hidden",value="#{user._id}",name="comment[from]")
+                     input#comment-from-name(type="hidden",value="#{user.name}")
+                     .form-group.row
+                        .img.col-sm-2
+                           img.img-circle(src="")
+                        .textarea.col-sm-10
+                           textarea#comment-content.form-control(placeholder="扯淡、吐槽、表扬......畅所欲言",rows="5",name="comment[content]")
+                     .form-group.row
+                        .col-sm-4.col-sm-offset-5
+                           .alert.alert-warning(role="alert")
+                              p 请您填写后再发表
+                     .form-group.row
+                        .col-sm-2.col-sm-offset-10
+                           a#subcomment.btn.btn-success(role="button",href="#") 发表评论
+            else
+               .page-header
+                  form(method="post")
+                     fieldSet(disabled)
+                        .form-group.row
+                           .textarea.col-sm-10.col-sm-offset-2
+                              textarea.form-control(placeholder="请登录后再评论",rows="5")
+                        .form-group.row
+                           .col-sm-2.col-sm-offset-10
+                              a.btn.btn-success(role="button",href="#") 发表评论
+            .comment-box
+               each item in comment
+                  .media.media-main
+                     .media-left
+                        a(href="#")
+                           img.media-object.img-circle(src="/images/portrait_example1.jpeg" alt="用户头像")
+                     .media-body
+                        h4 #{item.from.name}
+                        p #{item.content}
+                        small 时间：#{moment(item.meta.createAt).format('YYYY-MM-DD')}
+                        if user
+                           p.contr
+                              a.pack(href="#") 收起
+                              a.reply(href="#") 回复
+                           form.reply-form
+                              //被回复人id
+                              input(type="hidden",value="#{item.from._id}")
+                              //被回复人name
+                              input(type="hidden",value="#{item.from.name}")
+                              //回复所属评论id
+                              input(type="hidden",value="#{item._id}")
+                              .form-group
+                                 textarea.form-control(placeholder="回复他/她......",rows="3")
+                              .form-group.row
+                                 .col-sm-4.col-sm-offset-4
+                                    .alert.alert-warning(role="alert")
+                                       p 请您填写后再回复
+                              .form-group.row
+                                 .col-sm-2.col-sm-offset-10
+                                    a.btn.btn-success(role="button",href="#") 回复
+                        .reply-box
+                           if item.reply
+                              each reply in item.reply
+                                 .media
+                                    .media-left
+                                       a(href="#")
+                                          img.media-object.img-circle(src="/images/portrait_example1.jpeg" alt="用户头像")
+                                    .media-body
+                                       h4 #{reply.from.name}&nbsp;回复&nbsp#{reply.to.name}：
+                                       p #{reply.content}
+                                       small 时间：#{moment(reply.meta.createAt).format('YYYY-MM-DD')}
+                                       if user
+                                          p.contr
+                                             a.pack(href="#") 收起
+                                             a.reply(href="#") 回复
+                                          form.reply-form
+                                             //被回复人id
+                                             input(type="hidden",value="#{reply.from._id}")
+                                             //被回复人name
+                                             input(type="hidden",value="#{reply.from.name}")
+                                             //回复所属评论id
+                                             input(type="hidden",value="#{item._id}")
+                                             .form-group
+                                                textarea.form-control(placeholder="回复他/她......",rows="3")
+                                             .form-group.row
+                                                .col-sm-4.col-sm-offset-4
+                                                   .alert.alert-warning(role="alert")
+                                                      p 请您填写后再回复
+                                             .form-group.row
+                                                .col-sm-2.col-sm-offset-10
+                                                   a.btn.btn-success(role="button",href="#") 回复
+                                 hr
+                  hr
+
+   script(src="/js/comment.js")
+   script(src="/js/reply.js")

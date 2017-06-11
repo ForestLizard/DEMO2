@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+   .container.index-page
+      .row
+         each item in movies
+            .col-md-2
+               .thumbnail
+                  .he-wrap.tpl2
+                     img(src='#{item.poster}',alt="#{item.title}")
+                     .he-view
+                        .bg.a0(data-animate="fadeIn")
+                           .center-bar
+                              a.twitter.a0(href='#',data-animate="elasticInDown")
+                              a.google.a1(href='#',data-animate="elasticInDown")
+                              a.in.a2(href='#',data-animate="elasticInDown")
+
+                  .caption
+                     h3 #{item.title}
+                     p
+                        a.btn.btn-primary(href='/movie/#{item._id}',role='button') 观看预告片

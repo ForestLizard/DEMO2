@@ -1,0 +1,112 @@
+body{
+    margin: 50px 0;
+    /*background-size: 100%;*/
+
+}
+
+small{
+    color: #999999;
+}
+
+/*首页缩略图*/
+.index-page .thumbnail{
+    height: 380px;
+    padding: 0;
+}
+.index-page .thumbnail img{
+    width: 100%;
+    height:230px;
+}
+
+.index-page .thumbnail .caption{
+    text-align: center;
+}
+.index-page .thumbnail .caption h3{
+    height: 52px;
+}
+
+/*用户名验证*/
+.error{
+    color: #a3332f;
+    font-size: 0.8em;
+}
+.invalid{
+    border: 1px solid #a3332f;
+    box-shadow: 0 0 8px 1px #a3332f;
+
+}
+
+
+
+/*页脚*/
+
+
+#footer{
+    height: 50px;
+    line-height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #F5F5F5;
+    background-color: #222222 ;
+}
+
+.pull-right li{
+    width: 200px;
+    display: inline-block;
+}
+
+.pull-right a{
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+.pull-right a:link,.pull-right a:visited{
+    color: #E6D38F;
+}
+.pull-right a:hover,.pull-right a:active{
+    color: #F5F5F5;
+    text-decoration: none;
+}
+
+/*弹出警告框*/
+.alert {
+    display: none;
+    text-align: center;
+}
+
+/*评论头像*/
+.media-left{
+    width: 10%;
+}
+.media-left a{
+    display: block;
+    width: 100%;
+    height: 100%;
+
+}
+.media img{
+    width: 100%;
+    height: 100%;
+}
+
+/*回复*/
+.contr{
+    text-align: right;
+}
+
+.reply,.pack{
+    margin: 0 10px;
+    color: #5d5d5d;
+    text-align: right;
+
+}
+.reply:hover,.pack:hover{
+    color: #3b3b3b;
+    text-decoration: none;
+}
+
+
+.reply-form,.pack{
+    display: none;
+}
