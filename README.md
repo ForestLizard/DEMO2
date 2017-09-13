@@ -1,7 +1,7 @@
 # movieSharing<br/>
 a website for movie sharing<br/>
 技术栈：bootstrap、jQuery、node.js、Express、Jade、mongoDB<br/>
-主要功能：
+主要功能：<br/>
 1、基本的电影增加，查询，更新，删除；<br/>
 2、简单的权限管理功能；<br/>
 3、用户登录注册，评论和相互回复；<br/>
